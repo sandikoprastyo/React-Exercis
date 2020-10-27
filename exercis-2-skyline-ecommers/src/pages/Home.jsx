@@ -1,42 +1,56 @@
-import React from "react";
-import background from "../assets/img/bb.jpg";
-import Abouts from "../components/AboutCards.jsx";
-import Footer from "../components/Footer";
-
-const styles = {
-  width: "100%",
-  height: "550px",
-  backgroundImage: `url(${background})`,
-};
+import React from 'react';
+import Banner from '../components/Home/Banner';
+import Img from '../assets/product/FX8886_SL_eCom.jpg';
+import AboutCards from '../components/Home/AboutCards';
 
 const Home = () => {
   return (
-    <div>
-      <div
-        className=" bg-cover border-t-2 border-blue-600 h-full"
-        style={styles}
-      >
-        <div className="content px-8 py-2">
-          <div className="body mt-20 mx-8">
-            <div className="md:flex items-center justify-between">
-              <div className="w-full md:w-1/2 mr-auto mt-16">
-                <h1 className="text-4xl font-bold text-white tracking-wide">
-                  Abourt
-                </h1>
-                <h2 className=" text-2xl font-bold text-white tracking-wide">
-                  Welcome <span className="text-gray-800">Skyline</span>
-                </h2>
-                <p className="text-gray-300">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-              </div>
-              <div className="w-full md:max-w-md mt-6"></div>
-            </div>
+    <div className='font-serif'>
+      <Banner />
+      {/* Arrow */}
+      <div className='flex justify-center'>
+        <a href='#about'>
+          <svg
+            className='animate-bounce w-6 h-6 text-purple-600'
+            fill='none'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='4'
+            viewBox='0 0 24 24'
+            stroke='currentColor'
+          >
+            <path d='M19 14l-7 7m0 0l-7-7m7 7V3'></path>
+          </svg>
+        </a>
+      </div>
+      {/* grid */}
+      <div class='grid xl:grid-cols-2 sm:grid-cols-1 md:grid-cols-1 gap-4 '>
+        <div class='flex col-span-1 flex-col items-center'>
+          <div className='flex flex-wrap w-full mb-20 flex-col items-center text-center pt-24'>
+            <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900'>
+              About
+            </h1>
+            <p className='w-full px-20 leading-relaxed text-base'>
+              J'aime bien partager mes connaissances et des recherche
+              intéressantes, pour le faire j'ai mis en place un blog personnel.
+              Nous abordons plusieurs sujets intéressants et je donne quelques
+              astuces et conseils aux jeunes développeurs pour mieux s'en
+              sortir.
+            </p>
           </div>
         </div>
+        <div class='flex col-span-1 flex-col items-center'>
+          <img
+            src={Img}
+            alt='img'
+            width='50%'
+            className='w-1/2 sm:w-auto md:1/2 lg:w-2/5 xl:w-2/5  mb-10 mt-10 shadow-2xl rounded-lg'
+          />
+        </div>
       </div>
-      <Abouts />
-      <Footer />
+      <AboutCards />
+      <AboutCards />
+      <AboutCards />
     </div>
   );
 };

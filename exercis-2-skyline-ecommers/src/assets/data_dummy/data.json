@@ -1,0 +1,26 @@
+[
+  {
+    "nama_produk": "type z",
+    "size": "32",
+    "type": "running",
+    "merek": "adidas",
+    "harga": "100000",
+    "img": "../product/FX8886_SL_eCom.jpg"
+  },
+  {
+    "nama_produk": "type z",
+    "size": "32",
+    "type": "running",
+    "merek": "adidas",
+    "harga": "100000",
+    "img": "../product/FX8886_SL_eCom.jpg"
+  },
+  {
+    "nama_produk": "type z",
+    "size": "32",
+    "type": "running",
+    "merek": "adidas",
+    "harga": "100000",
+    "img": "../product/FX8886_SL_eCom.jpg"
+  }
+]
