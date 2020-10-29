@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from '../components/Home/Banner';
-import Img from '../assets/product/FX8886_SL_eCom.jpg';
+import Img from '../assets/product/FX8886_SL_eCom.png';
 import AboutCards from '../components/Home/AboutCards';
 
 const Home = () => {
@@ -48,8 +48,6 @@ const Home = () => {
           />
         </div>
       </div>
-      <AboutCards />
-      <AboutCards />
       <AboutCards />
     </div>
   );

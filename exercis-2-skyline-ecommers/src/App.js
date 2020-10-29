@@ -3,7 +3,13 @@ import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import './styles/main.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Home, Contact, Shopping, LoginAuth, Register } from './pages/Index.js';
+import {
+  Home,
+  Contact,
+  Shopping,
+  LoginAuth,
+  Register,
+} from './pages/Index.js';
 
 function App() {
   return (

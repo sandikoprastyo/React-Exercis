@@ -12,34 +12,78 @@
 
 ?next instal pm2 = adalah manajer proses untuk JavaScript runtime Node.js.
 */
-
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const fs = require('fs');
+const path = require('path');
+const multer = require('multer');
+const productModel = require('./model/models-product');
 require('dotenv/config');
-
+//import router
+const productRouter = require('./router/product');
+app.use(bodyParser.urlencoded({ extended: true }));
+// Set EJS as templating engine
+app.set('view engine', 'ejs');
 //app use lib cors and body-parser
 app.use(cors());
 app.use(bodyParser.json());
-
-//import router
-const postRouter = require('./router/post');
-
 //use postRouter
-app.use('/posts', postRouter);
+app.use('/products', productRouter);
+
+//image multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now());
+  },
+});
+let upload = multer({ storage: storage });
+
+// Uploading the image
+app.post('/', (req, res) => {
+  var obj = {
+    name: req.body.name,
+    price: req.body.price,
+    rate: req.body.rate,
+    image: req.body.image,
+  };
+  productModel.create(obj, (err, item) => {
+    if (err) {
+      console.log(err);
+    } else {
+      //obj.save();
+      res.redirect('/');
+    }
+  });
+});
 
 // root
 app.get('/', (req, res) => {
-  res.send('<h1>This home page</h1>');
+  productModel.find({}, (err, items) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+      res.send();
+    } else {
+      res.render('app', { items: items });
+    }
+  });
 });
 
 //connect to DB mongo
-mongoose.connect(process.env.DB_CONNECT, { useUnifiedTopology: true }, () => {
-  console.log('Connect to db success');
-  console.log('====================================');
-});
+mongoose.connect(
+  process.env.DB_CONNECT,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log('Connect to db success');
+    console.log('====================================');
+  },
+);
 
 //! Endpoint running server
 app.listen(8080, () => {

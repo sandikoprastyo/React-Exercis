@@ -6,9 +6,6 @@ const Shopping = () => {
     <div className='pt-24'>
       <div className='flex-auto'>
         <AboutCards />
-        <AboutCards />
-        <AboutCards />
-        <AboutCards />
       </div>
     </div>
   );
